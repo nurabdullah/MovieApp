@@ -24,7 +24,7 @@
                                         <rect key="frame" x="10" y="100" width="373" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5DH-PZ-Ncj">
-                                                <rect key="frame" x="0.0" y="0.0" width="288" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="312.66666666666669" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="AQO-da-3Ei"/>
                                                 </constraints>
@@ -32,10 +32,10 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6K-rV-ocx">
-                                                <rect key="frame" x="298" y="0.0" width="75" height="50"/>
+                                                <rect key="frame" x="322.66666666666669" y="0.0" width="50.333333333333314" height="50"/>
                                                 <color key="tintColor" red="0.078431372550000003" green="0.59999999999999998" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Ara"/>
                                                 <connections>
                                                     <action selector="searchButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="paD-Ed-D2z"/>
                                                 </connections>
