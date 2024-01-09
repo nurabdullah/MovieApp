@@ -38,13 +38,9 @@ class ViewController: UIViewController {
     @IBAction func searchButton(_ sender: UIButton) {
         if let movieTitle = movieField.text, !movieTitle.isEmpty {
             searchMovies(with: movieTitle)
-            movieField.text = ""
-            movies.removeAll()
         }
-        movies.removeAll()
-        
     }
-    
+
     func searchMovies(with title: String) {
         let apiKey = "980ee044"
         let urlString = "https://www.omdbapi.com/?apikey=\(apiKey)&s=\(title)"
@@ -70,7 +66,8 @@ class ViewController: UIViewController {
                 let decoder = JSONDecoder()
                 let searchResponse = try decoder.decode(SearchResponse.self, from: data)
                 DispatchQueue.main.async {
-                    self?.displayMovies(searchResponse.search)
+                    self?.updateMovies(with: searchResponse.search)
+                    self?.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
                 }
             } catch {
                 print("Hata oluştu: \(error)")
@@ -79,8 +76,8 @@ class ViewController: UIViewController {
         task.resume()
     }
 
-    func displayMovies(_ movies: [Movie]) {
-        self.movies = movies
+    func updateMovies(with newMovies: [Movie]) {
+        movies = newMovies
         collectionView.reloadData()
     }
 
