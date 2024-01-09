@@ -114,7 +114,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="QOz-fZ-11d" id="Lfn-m7-Vqb"/>
-                        <outlet property="movieField" destination="5DH-PZ-Ncj" id="61B-6u-T2n"/>
+                        <outlet property="movieSearchField" destination="5DH-PZ-Ncj" id="61B-6u-T2n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

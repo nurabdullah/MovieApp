@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var movies: [Movie] = []
+    @IBOutlet weak var movieSearchField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,18 +34,17 @@ class ViewController: UIViewController {
     }
     
     
-    @IBOutlet weak var movieField: UITextField!
     
     @IBAction func searchButton(_ sender: UIButton) {
-        if let movieTitle = movieField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !movieTitle.isEmpty {
-            searchMovies(with: movieTitle)
+        if let movieTitle = movieSearchField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !movieTitle.isEmpty {
+            searchMoviesApiRequest(with: movieTitle)
         } else {
             print("Geçersiz arama")
         }
     }
-
-
-    func searchMovies(with title: String) {
+    
+    
+    func searchMoviesApiRequest(with title: String) {
         let apiKey = "980ee044"
         let urlString = "https://www.omdbapi.com/?apikey=\(apiKey)&s=\(title)"
         
@@ -78,12 +78,12 @@ class ViewController: UIViewController {
         }
         task.resume()
     }
-
+    
     func updateMovies(with newMovies: [Movie]) {
         movies = newMovies
         collectionView.reloadData()
     }
-
+    
     
     
 }

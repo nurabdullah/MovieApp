@@ -12,6 +12,7 @@ class MoviewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLbl: UILabel!
     
     func setup(with movie: Movie) {
+        
         titleLbl.text = movie.title
         
         if let posterURL = URL(string: movie.posterURL) {
@@ -19,7 +20,6 @@ class MoviewCollectionViewCell: UICollectionViewCell {
                 if let data = try? Data(contentsOf: posterURL) {
                     DispatchQueue.main.async { [weak self] in
                         guard let image = UIImage(data: data) else { return }
-                        // Gerekli boyut ayarlamalarını yapın
                         self?.moviewImageView.contentMode = .scaleAspectFit
                         self?.moviewImageView.image = image
                     }
