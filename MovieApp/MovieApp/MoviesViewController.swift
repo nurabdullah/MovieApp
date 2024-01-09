@@ -19,7 +19,7 @@ struct SearchResponse: Decodable {
 }
 
 
-class ViewController: UIViewController {
+class MoviesViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension MoviesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movies.count
     }
@@ -101,13 +101,13 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension MoviesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 500, height: 500)
     }
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension MoviesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(movies[indexPath.row].title)
     }
