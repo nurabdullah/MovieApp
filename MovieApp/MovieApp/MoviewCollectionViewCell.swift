@@ -8,9 +8,7 @@
 import UIKit
 
 class MoviewCollectionViewCell: UICollectionViewCell {
-    
     @IBOutlet weak var moviewImageView: UIImageView!
-    
     @IBOutlet weak var titleLbl: UILabel!
     
     func setup(with movie: Movie) {
@@ -20,12 +18,14 @@ class MoviewCollectionViewCell: UICollectionViewCell {
             DispatchQueue.global().async {
                 if let data = try? Data(contentsOf: posterURL) {
                     DispatchQueue.main.async { [weak self] in
-                        self?.moviewImageView.image = UIImage(data: data)
+                        guard let image = UIImage(data: data) else { return }
+                        // Gerekli boyut ayarlamalarını yapın
+                        self?.moviewImageView.contentMode = .scaleAspectFit
+                        self?.moviewImageView.image = image
                     }
                 }
             }
         }
     }
-
-    
 }
+
