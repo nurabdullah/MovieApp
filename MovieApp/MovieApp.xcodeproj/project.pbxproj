@@ -17,6 +17,7 @@
 		D9A64FC92B4CA471001B6E6D /* MovieAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A64FC82B4CA471001B6E6D /* MovieAppTests.swift */; };
 		D9A64FD32B4CA471001B6E6D /* MovieAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A64FD22B4CA471001B6E6D /* MovieAppUITests.swift */; };
 		D9A64FD52B4CA471001B6E6D /* MovieAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A64FD42B4CA471001B6E6D /* MovieAppUITestsLaunchTests.swift */; };
+		D9D40EB82B4D6B1F002E02CB /* MoviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D40EB72B4D6B1F002E02CB /* MoviewCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		D9A64FCE2B4CA471001B6E6D /* MovieAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9A64FD22B4CA471001B6E6D /* MovieAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAppUITests.swift; sourceTree = "<group>"; };
 		D9A64FD42B4CA471001B6E6D /* MovieAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D9D40EB72B4D6B1F002E02CB /* MoviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviewCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				D9A64FBC2B4CA471001B6E6D /* LaunchScreen.storyboard */,
 				D9A64FBF2B4CA471001B6E6D /* Info.plist */,
 				D9A64FB72B4CA470001B6E6D /* MovieApp.xcdatamodeld */,
+				D9D40EB72B4D6B1F002E02CB /* MoviewCollectionViewCell.swift */,
 			);
 			path = MovieApp;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				D9A64FAF2B4CA470001B6E6D /* AppDelegate.swift in Sources */,
 				D9A64FB92B4CA470001B6E6D /* MovieApp.xcdatamodeld in Sources */,
 				D9A64FB12B4CA470001B6E6D /* SceneDelegate.swift in Sources */,
+				D9D40EB82B4D6B1F002E02CB /* MoviewCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
