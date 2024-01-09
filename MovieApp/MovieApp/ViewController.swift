@@ -36,10 +36,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var movieField: UITextField!
     
     @IBAction func searchButton(_ sender: UIButton) {
-        if let movieTitle = movieField.text, !movieTitle.isEmpty {
+        if let movieTitle = movieField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !movieTitle.isEmpty {
             searchMovies(with: movieTitle)
+        } else {
+            print("Geçersiz arama")
         }
     }
+
 
     func searchMovies(with title: String) {
         let apiKey = "980ee044"
