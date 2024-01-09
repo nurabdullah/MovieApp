@@ -13,9 +13,19 @@ class MoviewCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLbl: UILabel!
     
-    func setup(with movie: Movie){
-        moviewImageView.image = movie.image
+    func setup(with movie: Movie) {
         titleLbl.text = movie.title
+        
+        if let posterURL = URL(string: movie.posterURL) {
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: posterURL) {
+                    DispatchQueue.main.async { [weak self] in
+                        self?.moviewImageView.image = UIImage(data: data)
+                    }
+                }
+            }
+        }
     }
+
     
 }

@@ -1,18 +1,21 @@
 import UIKit
 
-struct Movie {
+struct Movie: Decodable {
     let title: String
-    let image: UIImage
+    let posterURL: String
+    
+    enum CodingKeys: String, CodingKey {
+        case title = "Title"
+        case posterURL = "Poster"
+    }
 }
+
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    struct Movie: Decodable {
-        let title: String
-        let posterURL: String
-    }
+
     
     var movies: [Movie] = [
         //        Movie(title: "Deneme1", image: UIImage(named: "TX_Dana")!)
@@ -38,7 +41,7 @@ class ViewController: UIViewController {
     
     func searchMovies(with title: String) {
         let apiKey = "980ee044"
-        let urlString = "http://www.omdbapi.com/?apikey=\(apiKey)&t=\(title)"
+        let urlString = "https://www.omdbapi.com/?apikey=\(apiKey)&t=\(title)"
         
         guard let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
               let url = URL(string: encodedURLString) else {
@@ -52,23 +55,33 @@ class ViewController: UIViewController {
                 return
             }
             
-            guard let data = data,
-                  let movieInfo = try? JSONDecoder().decode(Movie.self, from: data) else {
-                print("Film verisi çözümlenemedi")
+            guard let data = data else {
+                print("Boş veri")
                 return
             }
             
-            DispatchQueue.main.async {
-                self?.displayMovieInfo(movieInfo)
-            }
-        }
-        task.resume()
+            do {
+                       let decoder = JSONDecoder()
+                       let movieInfo = try decoder.decode(Movie.self, from: data)
+                       DispatchQueue.main.async {
+                           self?.displayMovieInfo(movieInfo)
+                       }
+                   } catch {
+                       print("Hata oluştu: \(error)")
+                   }
+               }
+               task.resume()
     }
-    
+
+
     func displayMovieInfo(_ movie: Movie) {
         movies.append(movie)
         collectionView.reloadData()
     }
+
+
+    
+  
     
     
 }
@@ -80,6 +93,8 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MoviewCollectionViewCell", for: indexPath) as! MoviewCollectionViewCell
+        let movie = movies[indexPath.item]
+        cell.setup(with: movie)
         return cell
     }
 }
