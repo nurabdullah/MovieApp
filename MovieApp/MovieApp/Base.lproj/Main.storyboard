@@ -36,6 +36,9 @@
                                                 <color key="tintColor" red="0.078431372550000003" green="0.59999999999999998" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                                <connections>
+                                                    <action selector="searchButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="paD-Ed-D2z"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -111,6 +114,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="QOz-fZ-11d" id="Lfn-m7-Vqb"/>
+                        <outlet property="movieField" destination="5DH-PZ-Ncj" id="61B-6u-T2n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  MovieApp
-//
-//  Created by Abdullah Nur on 9.01.2024.
-//
-
 import UIKit
 
 struct Movie {
@@ -17,34 +10,32 @@ class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     let movies: [Movie] = [
-    
-        Movie(title: "Deneme1", image: UIImage(named: "TX_Dana")!),
-        Movie(title: "Deneme1", image: UIImage(named: "TX_Hasta")!),
-        Movie(title: "Deneme1", image: UIImage(named: "TX_Kuruda")!),
-        Movie(title: "Deneme1", image: UIImage(named: "TX_Toplam")!),
-        Movie(title: "Deneme1", image: UIImage(named: "TX_Dana")!),
-        Movie(title: "Deneme1", image: UIImage(named: "TX_Dana")!),
-        Movie(title: "Deneme1", image: UIImage(named: "TX_Dana")!),
-        Movie(title: "Deneme1", image: UIImage(named: "TX_Dana")!),
-    
-      
-        
+        Movie(title: "Deneme1", image: UIImage(named: "TX_Dana")!)
     ]
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
     }
-
-
+    
+    
+   
+    @IBOutlet weak var movieField: UITextField!
+    
+    @IBAction func searchButton(_ sender: UIButton) {
+        if let movieTitle = movieField.text, !movieTitle.isEmpty {
+               print(movieTitle)
+           }
+    }
+    
+    
+   
 }
 
-extension ViewController: UICollectionViewDataSource{
-    
+extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movies.count
     }
@@ -56,17 +47,14 @@ extension ViewController: UICollectionViewDataSource{
     }
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout{
-    
+extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 500, height: 300)
     }
 }
 
-extension ViewController: UICollectionViewDelegate{
-    
+extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(movies[indexPath.row].title)
     }
-    
 }
