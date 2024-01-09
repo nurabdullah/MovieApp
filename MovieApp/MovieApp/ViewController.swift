@@ -10,6 +10,14 @@ struct Movie: Decodable {
     }
 }
 
+struct SearchResponse: Decodable {
+    let search: [Movie]
+    
+    enum CodingKeys: String, CodingKey {
+        case search = "Search"
+    }
+}
+
 
 class ViewController: UIViewController {
     
@@ -34,12 +42,12 @@ class ViewController: UIViewController {
             movies.removeAll()
         }
         movies.removeAll()
-
+        
     }
     
     func searchMovies(with title: String) {
         let apiKey = "980ee044"
-        let urlString = "https://www.omdbapi.com/?apikey=\(apiKey)&t=\(title)"
+        let urlString = "https://www.omdbapi.com/?apikey=\(apiKey)&s=\(title)"
         
         guard let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
               let url = URL(string: encodedURLString) else {
@@ -60,9 +68,9 @@ class ViewController: UIViewController {
             
             do {
                 let decoder = JSONDecoder()
-                let movieInfo = try decoder.decode(Movie.self, from: data)
+                let searchResponse = try decoder.decode(SearchResponse.self, from: data)
                 DispatchQueue.main.async {
-                    self?.displayMovieInfo(movieInfo)
+                    self?.displayMovies(searchResponse.search)
                 }
             } catch {
                 print("Hata oluştu: \(error)")
@@ -70,12 +78,12 @@ class ViewController: UIViewController {
         }
         task.resume()
     }
-    
-    
-    func displayMovieInfo(_ movie: Movie) {
-        movies.append(movie)
+
+    func displayMovies(_ movies: [Movie]) {
+        self.movies = movies
         collectionView.reloadData()
     }
+
     
     
 }
@@ -94,8 +102,8 @@ extension ViewController: UICollectionViewDataSource {
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: 500, height: 500) 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 500, height: 500)
     }
 }
 
