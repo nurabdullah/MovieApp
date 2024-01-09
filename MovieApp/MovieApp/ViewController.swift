@@ -15,12 +15,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-
-    
-    var movies: [Movie] = [
-        //        Movie(title: "Deneme1", image: UIImage(named: "TX_Dana")!)
-    ]
-    
+    var movies: [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +25,16 @@ class ViewController: UIViewController {
     }
     
     
-    
     @IBOutlet weak var movieField: UITextField!
     
     @IBAction func searchButton(_ sender: UIButton) {
         if let movieTitle = movieField.text, !movieTitle.isEmpty {
             searchMovies(with: movieTitle)
+            movieField.text = ""
+            movies.removeAll()
         }
+        movies.removeAll()
+
     }
     
     func searchMovies(with title: String) {
@@ -61,27 +59,23 @@ class ViewController: UIViewController {
             }
             
             do {
-                       let decoder = JSONDecoder()
-                       let movieInfo = try decoder.decode(Movie.self, from: data)
-                       DispatchQueue.main.async {
-                           self?.displayMovieInfo(movieInfo)
-                       }
-                   } catch {
-                       print("Hata oluştu: \(error)")
-                   }
-               }
-               task.resume()
+                let decoder = JSONDecoder()
+                let movieInfo = try decoder.decode(Movie.self, from: data)
+                DispatchQueue.main.async {
+                    self?.displayMovieInfo(movieInfo)
+                }
+            } catch {
+                print("Hata oluştu: \(error)")
+            }
+        }
+        task.resume()
     }
-
-
+    
+    
     func displayMovieInfo(_ movie: Movie) {
         movies.append(movie)
         collectionView.reloadData()
     }
-
-
-    
-  
     
     
 }
@@ -101,7 +95,7 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 500, height: 300)
+        return CGSize(width: 300, height: 300)
     }
 }
 
