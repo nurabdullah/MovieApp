@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MoviewCollectionViewCell: UICollectionViewCell {
+class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var moviewImageView: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     
