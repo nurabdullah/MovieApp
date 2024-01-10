@@ -137,10 +137,14 @@ extension MoviesViewController: UICollectionViewDataSource {
 
 extension MoviesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 500, height: 500)
-        
-        
+        return CGSize(width: 400, height: 450)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 50
+    }
+    
+  
 }
 
 extension MoviesViewController: UICollectionViewDelegate {
@@ -155,3 +159,4 @@ extension MoviesViewController: UICollectionViewDelegate {
         }
     }
 }
+
