@@ -28,6 +28,7 @@ class MovieDetailViewController: UIViewController {
     
     @IBOutlet weak var deneme5: UIStackView!
     
+    @IBOutlet weak var deneme6: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class MovieDetailViewController: UIViewController {
         addLineUnderStackView(deneme3)
         addLineUnderStackView(deneme4)
         addLineUnderStackView(deneme5)
+        addLineUnderStackView(deneme6)
     }
 
     func addLineUnderStackView(_ stackView: UIStackView) {

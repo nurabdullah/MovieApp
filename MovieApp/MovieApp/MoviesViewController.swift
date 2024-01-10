@@ -60,9 +60,8 @@ class MoviesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Geri", style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.tintColor = UIColor(red: 140/255, green: 156/255, blue: 165/255, alpha: 1.0)
-
 
         collectionView.dataSource = self
         collectionView.delegate = self

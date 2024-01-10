@@ -239,15 +239,15 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dKX-7a-aaX">
                                                 <rect key="frame" x="0.0" y="431.66666666666663" width="343" height="51.333333333333314"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" text="Oyuncular" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eib-I2-8dh" userLabel="Oyuncular">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Oyuncular" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eib-I2-8dh" userLabel="Oyuncular">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="20.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <color key="textColor" red="0.54901960780000003" green="0.61176470589999998" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Yükleniyor..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEm-Pf-6MO">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Yükleniyor..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEm-Pf-6MO">
                                                         <rect key="frame" x="0.0" y="28.333333333333371" width="343" height="23"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                         <color key="textColor" red="0.54901960780000003" green="0.61176470589999998" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -283,6 +283,7 @@
                         <outlet property="deneme3" destination="8RE-bq-kuW" id="2CI-om-UKQ"/>
                         <outlet property="deneme4" destination="VWp-yj-iOK" id="4pw-Kh-g8R"/>
                         <outlet property="deneme5" destination="8rl-LC-Ul0" id="d0a-Ja-PBf"/>
+                        <outlet property="deneme6" destination="dKX-7a-aaX" id="qIu-AZ-13D"/>
                         <outlet property="movieActors" destination="LEm-Pf-6MO" id="jDS-pE-b8H"/>
                         <outlet property="movieDirector" destination="Iyf-jr-Frw" id="Omx-Fb-gC2"/>
                         <outlet property="movieGenre" destination="34w-hW-WFS" id="mh5-Cl-5MW"/>
