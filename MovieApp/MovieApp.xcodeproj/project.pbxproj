@@ -107,7 +107,6 @@
 			children = (
 				D9A64FAE2B4CA470001B6E6D /* AppDelegate.swift */,
 				D9A64FB02B4CA470001B6E6D /* SceneDelegate.swift */,
-				D9A64FB22B4CA470001B6E6D /* MoviesViewController.swift */,
 				D9A64FB42B4CA470001B6E6D /* Main.storyboard */,
 				D9A64FBA2B4CA471001B6E6D /* Assets.xcassets */,
 				D9A64FBC2B4CA471001B6E6D /* LaunchScreen.storyboard */,
@@ -115,6 +114,7 @@
 				D9A64FB72B4CA470001B6E6D /* MovieApp.xcdatamodeld */,
 				D9D40EB72B4D6B1F002E02CB /* MovieCollectionViewCell.swift */,
 				D9D40EB92B4DFDA9002E02CB /* MovieDetailViewController.swift */,
+				D9A64FB22B4CA470001B6E6D /* MoviesViewController.swift */,
 			);
 			path = MovieApp;
 			sourceTree = "<group>";

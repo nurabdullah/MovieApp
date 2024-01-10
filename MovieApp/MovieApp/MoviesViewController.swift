@@ -18,6 +18,8 @@ struct SearchResponse: Decodable {
     }
 }
 
+// Year, Title, Runtime, Genre, Director, Actors
+
 
 class MoviesViewController: UIViewController {
     
@@ -110,5 +112,11 @@ extension MoviesViewController: UICollectionViewDelegateFlowLayout {
 extension MoviesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(movies[indexPath.row].title)
+        let selectedMovie = movies[indexPath.row]
+           let storyboard = UIStoryboard(name: "Main", bundle: nil)
+           if let movieDetailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController {
+               movieDetailVC.movie = selectedMovie
+               navigationController?.pushViewController(movieDetailVC, animated: true)
+           }
     }
 }
