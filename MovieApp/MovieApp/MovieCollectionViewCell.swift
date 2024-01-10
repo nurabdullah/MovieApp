@@ -15,7 +15,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.black.cgColor
-        layer.cornerRadius = 8.0 
+        layer.cornerRadius = 8.0
         titleLbl.text = movie.title
         
         if let posterURL = URL(string: movie.posterURL) {
