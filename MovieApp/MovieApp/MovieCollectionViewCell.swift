@@ -34,10 +34,12 @@ class MovieCollectionViewCell: UICollectionViewCell {
             ])
         }
     
+   
+    
     func setup(with movie: Movie) {
         
-        titleLbl.text = movie.title
-        
+        titleLbl.text = "\(movie.title) (\(movie.year))"
+
         if let posterURL = URL(string: movie.posterURL) {
             DispatchQueue.global().async {
                 if let data = try? Data(contentsOf: posterURL) {
