@@ -4,14 +4,34 @@ struct Movie: Decodable {
     let title: String
     let posterURL: String
     let imdbID: String
-    let year: String
     
     
     enum CodingKeys: String, CodingKey {
         case title = "Title"
         case posterURL = "Poster"
         case imdbID = "imdbID"
+    }
+}
+
+struct MovieDetail: Decodable {
+    let title: String
+    let posterURL: String
+    let imdbID: String
+    let year: String
+    let runtime: String
+    let genre: String
+    let director: String
+    let actors: String
+    
+    enum CodingKeys: String, CodingKey {
+        case title = "Title"
+        case posterURL = "Poster"
+        case imdbID = "imdbID"
         case year = "Year"
+        case runtime = "Runtime"
+        case genre = "Genre"
+        case director = "Director"
+        case actors = "Actors"
     }
 }
 
@@ -122,9 +142,7 @@ extension MoviesViewController: UICollectionViewDelegateFlowLayout {
 extension MoviesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedMovie = movies[indexPath.row]
-        print("Seçilen filmin imdbID'si: \(selectedMovie.imdbID)")
-        print("Seçilen filmin imdbID'si: \(selectedMovie.year)")
-
+//        print("Seçilen filmin imdbID'si: \(selectedMovie.imdbID)")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let movieDetailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController {
             movieDetailVC.movie = selectedMovie

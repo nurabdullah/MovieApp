@@ -19,27 +19,64 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var movieDirector: UILabel!
     @IBOutlet weak var movieActors: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        if let movie = movie {
-            movieName.text = movie.title
-            movieYear.text = movie.year
-            movieRuntime.text = movie.genre
-//            movieGenre.text = movie.genre
-//            movieDirector.text = movie.director
-//            movieActors.text = movie.actors
-            
-            if let posterURL = URL(string: movie.posterURL) {
-                URLSession.shared.dataTask(with: posterURL) { [weak self] (data, _, error) in
-                    guard let data = data, error == nil else {
-                        print("Error loading image")
-                        return
-                    }
-                    DispatchQueue.main.async {
-                        self?.movieImage.image = UIImage(data: data)
-                    }
-                }.resume()
+   
+    
+    override func viewWillAppear(_ animated: Bool) {
+            if let movie = movie {
+                    movieName.text = movie.title
+                    fetchMovieDetails(with: movie.imdbID)
+                    if let posterURL = URL(string: movie.posterURL) {
+                    URLSession.shared.dataTask(with: posterURL) { [weak self] (data, _, error) in
+                        guard let data = data, error == nil else {
+                            print("Error loading image")
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            self?.movieImage.image = UIImage(data: data)
+                        }
+                    }.resume()
+                }
             }
         }
-    }
+        
+    func fetchMovieDetails(with imdbID: String) {
+           let apiKey = "980ee044"
+           let urlString = "https://www.omdbapi.com/?apikey=\(apiKey)&i=\(imdbID)"
+           guard let url = URL(string: urlString) else {
+               print("Geçersiz URL")
+               return
+           }
+           
+           let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
+               if let error = error {
+                   print("Hata: \(error)")
+                   return
+               }
+               
+               guard let data = data else {
+                   print("Boş veri")
+                   return
+               }
+               
+               do {
+                   let decoder = JSONDecoder()
+                   let movieDetail = try decoder.decode(MovieDetail.self, from: data)
+                   
+                   DispatchQueue.main.async {
+                       self?.updateUI(with: movieDetail)
+                   }
+               } catch {
+                   print("Hata oluştu: \(error)")
+               }
+           }
+           task.resume()
+       }
+       
+       func updateUI(with movieDetail: MovieDetail) {
+           movieYear.text = movieDetail.year
+           movieRuntime.text = movieDetail.runtime
+           movieGenre.text = movieDetail.genre
+           movieDirector.text = movieDetail.director
+           movieActors.text = movieDetail.actors
+       }
 }
