@@ -29,7 +29,7 @@ class MovieDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         addLineUnderStackView(deneme)
         addLineUnderStackView(deneme2)
         addLineUnderStackView(deneme3)
