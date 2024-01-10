@@ -21,7 +21,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     private func addBottomLine() {
             bottomLineView = UIView()
-        bottomLineView.backgroundColor = UIColor.darkGray
+        bottomLineView.backgroundColor = UIColor(red: 140/255, green: 156/255, blue: 165/255, alpha: 1.0)
             bottomLineView.translatesAutoresizingMaskIntoConstraints = false
 
             contentView.addSubview(bottomLineView)

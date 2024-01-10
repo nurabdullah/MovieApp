@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -26,22 +25,22 @@
                                         <rect key="frame" x="10" y="100" width="373" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Film ara" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5DH-PZ-Ncj">
-                                                <rect key="frame" x="0.0" y="0.0" width="268" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="298" height="50"/>
+                                                <color key="backgroundColor" red="0.87450980392156863" green="0.8901960784313725" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="AQO-da-3Ei"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="name"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6K-rV-ocx">
-                                                <rect key="frame" x="273" y="0.0" width="100" height="50"/>
+                                                <rect key="frame" x="303" y="0.0" width="70" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="oS0-bz-HzF"/>
+                                                    <constraint firstAttribute="width" constant="70" id="oS0-bz-HzF"/>
                                                 </constraints>
-                                                <color key="tintColor" red="0.078431372550000003" green="0.59999999999999998" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" imagePlacement="trailing" imagePadding="6">
-                                                    <imageReference key="image" image="magnifyingglass" catalog="system" symbolScale="large" renderingMode="original"/>
+                                                <color key="tintColor" red="0.93725490196078431" green="0.14509803921568626" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                <buttonConfiguration key="configuration" style="filled" image="magnifyingglass" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="23"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="searchButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="paD-Ed-D2z"/>
@@ -51,7 +50,7 @@
                                     </stackView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QOz-fZ-11d">
                                         <rect key="frame" x="10" y="190" width="373" height="662"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.14901960780000001" green="0.1647058824" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fWh-fW-Lfx">
                                             <size key="itemSize" width="165" height="245"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -75,7 +74,7 @@
                                                                 <constraint firstAttribute="height" constant="40" id="N8U-CY-FIz"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="textColor" red="0.5490196078431373" green="0.61176470588235299" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -98,7 +97,7 @@
                                         </cells>
                                     </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.14901960784313725" green="0.16470588235294117" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="s41-sE-kHo" firstAttribute="leading" secondItem="3gl-Mw-JgX" secondAttribute="leading" constant="10" id="GYx-hg-FPg"/>
                                     <constraint firstAttribute="bottom" secondItem="QOz-fZ-11d" secondAttribute="bottom" id="HH3-Bb-XrT"/>
