@@ -26,37 +26,33 @@ class MovieDetailViewController: UIViewController {
     
     @IBOutlet weak var deneme5: UIStackView!
     
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
         
-
-
-
-        let line = CALayer()
-        line.backgroundColor = UIColor(red: 78/255, green: 83/255, blue: 86/255, alpha: 1.0).cgColor
-        line.frame = CGRect(x: -100, y: deneme.frame.height + 17, width: deneme.frame.width*100, height: 1)
-        let line1 = CALayer()
-        line1.backgroundColor = UIColor(red: 78/255, green: 83/255, blue: 86/255, alpha: 1.0).cgColor
-        line1.frame = CGRect(x: -100, y: deneme.frame.height + 17, width: deneme.frame.width*100, height: 1)
-        let line2 = CALayer()
-        line2.backgroundColor = UIColor(red: 78/255, green: 83/255, blue: 86/255, alpha: 1.0).cgColor
-        line2.frame = CGRect(x: -100, y: deneme.frame.height + 17, width: deneme.frame.width*100, height: 1)
-        
-        let line3 = CALayer()
-        line3.backgroundColor = UIColor(red: 78/255, green: 83/255, blue: 86/255, alpha: 1.0).cgColor
-        line3.frame = CGRect(x: -100, y: deneme.frame.height + 17, width: deneme.frame.width*100, height: 1)
-        
-        let line4 = CALayer()
-        line4.backgroundColor = UIColor(red: 78/255, green: 83/255, blue: 86/255, alpha: 1.0).cgColor
-        line4.frame = CGRect(x: -100, y: deneme.frame.height + 17, width:
-            deneme.frame.width*100, height: 1)
-        
-        deneme.layer.addSublayer(line)
-        deneme2.layer.addSublayer(line1)
-        deneme3.layer.addSublayer(line2)
-        deneme4.layer.addSublayer(line3)
-        deneme5.layer.addSublayer(line4)
-        
+        addLineUnderStackView(deneme)
+        addLineUnderStackView(deneme2)
+        addLineUnderStackView(deneme3)
+        addLineUnderStackView(deneme4)
+        addLineUnderStackView(deneme5)
     }
+
+    func addLineUnderStackView(_ stackView: UIStackView) {
+        let line = UIView()
+        line.backgroundColor = UIColor(red: 78/255, green: 83/255, blue: 86/255, alpha: 1.0)
+        line.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView.addSubview(line)
+        
+        NSLayoutConstraint.activate([
+            line.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            line.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
+            line.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 15),
+            line.heightAnchor.constraint(equalToConstant: 2)
+        ])
+    }
+
+
     
     override func viewWillAppear(_ animated: Bool) {
         if let movie = movie {
