@@ -3,12 +3,18 @@ import UIKit
 struct Movie: Decodable {
     let title: String
     let posterURL: String
+    let imdbID: String
+    let year: String
+    
     
     enum CodingKeys: String, CodingKey {
         case title = "Title"
         case posterURL = "Poster"
+        case imdbID = "imdbID"
+        case year = "Year"
     }
 }
+
 
 struct SearchResponse: Decodable {
     let search: [Movie]
@@ -18,7 +24,7 @@ struct SearchResponse: Decodable {
     }
 }
 
-// Year, Title, Runtime, Genre, Director, Actors
+// Runtime, Genre, Director, Actors
 
 
 class MoviesViewController: UIViewController {
@@ -45,11 +51,13 @@ class MoviesViewController: UIViewController {
         }
     }
     
+
     
     func searchMoviesApiRequest(with title: String) {
         let apiKey = "980ee044"
         let urlString = "https://www.omdbapi.com/?apikey=\(apiKey)&s=\(title)"
-        
+        print("Aranan URL: \(urlString)")
+
         guard let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
               let url = URL(string: encodedURLString) else {
             print("Geçersiz URL")
@@ -70,6 +78,8 @@ class MoviesViewController: UIViewController {
             do {
                 let decoder = JSONDecoder()
                 let searchResponse = try decoder.decode(SearchResponse.self, from: data)
+
+
                 DispatchQueue.main.async {
                     self?.updateMovies(with: searchResponse.search)
                     self?.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
@@ -111,12 +121,14 @@ extension MoviesViewController: UICollectionViewDelegateFlowLayout {
 
 extension MoviesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(movies[indexPath.row].title)
         let selectedMovie = movies[indexPath.row]
-           let storyboard = UIStoryboard(name: "Main", bundle: nil)
-           if let movieDetailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController {
-               movieDetailVC.movie = selectedMovie
-               navigationController?.pushViewController(movieDetailVC, animated: true)
-           }
+        print("Seçilen filmin imdbID'si: \(selectedMovie.imdbID)")
+        print("Seçilen filmin imdbID'si: \(selectedMovie.year)")
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let movieDetailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController {
+            movieDetailVC.movie = selectedMovie
+            navigationController?.pushViewController(movieDetailVC, animated: true)
+        }
     }
 }
