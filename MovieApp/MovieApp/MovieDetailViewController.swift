@@ -17,10 +17,28 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var movieRuntime: UILabel!
     @IBOutlet weak var movieGenre: UILabel!
     @IBOutlet weak var movieDirector: UILabel!
-    @IBOutlet weak var movieActors: UILabel!
     
-   
+    @IBOutlet weak var deneme: UIStackView!
+    @IBOutlet weak var deneme2: UIStackView!
+    @IBOutlet weak var deneme3: UIStackView!
     
+//    override func viewDidLoad() {
+//        let line = CALayer()
+//        line.backgroundColor = UIColor.black.cgColor // veya istediğiniz başka bir renk
+//        line.frame = CGRect(x: -10, y: deneme.frame.height - 1, width: deneme.frame.width*100, height: 1)
+//        let line1 = CALayer()
+//        line1.backgroundColor = UIColor.black.cgColor // veya istediğiniz başka bir renk
+//        line1.frame = CGRect(x: -10, y: deneme.frame.height - 1, width: deneme.frame.width*100, height: 1)
+//        let line2 = CALayer()
+//        line2.backgroundColor = UIColor.black.cgColor // veya istediğiniz başka bir renk
+//        line2.frame = CGRect(x: -10, y: deneme.frame.height - 1, width: deneme.frame.width*100, height: 1)
+//
+//        deneme.layer.addSublayer(line)
+//        deneme2.layer.addSublayer(line1)
+//        deneme3.layer.addSublayer(line2)
+//
+//    }
+//    
     override func viewWillAppear(_ animated: Bool) {
             if let movie = movie {
                     movieName.text = movie.title
@@ -77,6 +95,5 @@ class MovieDetailViewController: UIViewController {
            movieRuntime.text = movieDetail.runtime
            movieGenre.text = movieDetail.genre
            movieDirector.text = movieDetail.director
-           movieActors.text = movieDetail.actors
        }
 }

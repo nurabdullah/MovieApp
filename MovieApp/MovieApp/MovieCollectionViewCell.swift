@@ -10,12 +10,32 @@ import UIKit
 class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var moviewImageView: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
+    var bottomLineView: UIView!
+
+    
+    
+    override func awakeFromNib() {
+            super.awakeFromNib()
+            addBottomLine()
+        }
+    
+    private func addBottomLine() {
+            bottomLineView = UIView()
+        bottomLineView.backgroundColor = UIColor.darkGray
+            bottomLineView.translatesAutoresizingMaskIntoConstraints = false
+
+            contentView.addSubview(bottomLineView)
+
+            NSLayoutConstraint.activate([
+                bottomLineView.heightAnchor.constraint(equalToConstant: 1),
+                bottomLineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+                bottomLineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+                bottomLineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            ])
+        }
     
     func setup(with movie: Movie) {
         
-        layer.borderWidth = 1.0
-        layer.borderColor = UIColor.black.cgColor
-        layer.cornerRadius = 8.0
         titleLbl.text = movie.title
         
         if let posterURL = URL(string: movie.posterURL) {
