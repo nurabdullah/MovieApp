@@ -17,6 +17,8 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var movieRuntime: UILabel!
     @IBOutlet weak var movieGenre: UILabel!
     @IBOutlet weak var movieDirector: UILabel!
+    @IBOutlet weak var movieActors: UILabel!
+    
     
     @IBOutlet weak var deneme: UIStackView!
     @IBOutlet weak var deneme2: UIStackView!
@@ -112,5 +114,6 @@ class MovieDetailViewController: UIViewController {
         movieRuntime.text = movieDetail.runtime
         movieGenre.text = movieDetail.genre
         movieDirector.text = movieDetail.director
+        movieActors.text = movieDetail.actors
     }
 }

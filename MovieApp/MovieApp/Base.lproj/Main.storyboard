@@ -141,7 +141,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qnn-cb-DOy">
-                                        <rect key="frame" x="25" y="118.33333333333331" width="343" height="231"/>
+                                        <rect key="frame" x="25" y="98.333333333333314" width="343" height="231"/>
                                         <color key="tintColor" red="0.81568627449999997" green="0.86666666670000003" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="230" id="652-xr-U6O"/>
@@ -149,7 +149,7 @@
                                         <imageReference key="image" image="movieclapper" catalog="system" variableValue="0.0"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="3HK-0q-qRa">
-                                        <rect key="frame" x="25" y="385" width="343" height="396.66666666666674"/>
+                                        <rect key="frame" x="25" y="365" width="343" height="483"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZvN-tZ-7kd">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="51.333333333333336"/>
@@ -236,12 +236,29 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dKX-7a-aaX">
+                                                <rect key="frame" x="0.0" y="431.66666666666663" width="343" height="51.333333333333314"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" text="Oyuncular" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eib-I2-8dh" userLabel="Oyuncular">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" red="0.54901960780000003" green="0.61176470589999998" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Yükleniyor..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEm-Pf-6MO">
+                                                        <rect key="frame" x="0.0" y="28.333333333333371" width="343" height="23"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <color key="textColor" red="0.54901960780000003" green="0.61176470589999998" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.14901960784313725" green="0.16470588235294117" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Qnn-cb-DOy" firstAttribute="top" secondItem="ddN-lG-Oat" secondAttribute="top" constant="120" id="0BJ-3C-7yE"/>
+                                    <constraint firstItem="Qnn-cb-DOy" firstAttribute="top" secondItem="ddN-lG-Oat" secondAttribute="top" constant="100" id="0BJ-3C-7yE"/>
                                     <constraint firstItem="Qnn-cb-DOy" firstAttribute="leading" secondItem="ddN-lG-Oat" secondAttribute="leading" constant="25" id="Au3-Tx-RQ6"/>
                                     <constraint firstAttribute="trailing" secondItem="3HK-0q-qRa" secondAttribute="trailing" constant="25" id="LYi-jd-eej"/>
                                     <constraint firstItem="3HK-0q-qRa" firstAttribute="leading" secondItem="ddN-lG-Oat" secondAttribute="leading" constant="25" id="Vl7-R8-JGn"/>
@@ -266,6 +283,7 @@
                         <outlet property="deneme3" destination="8RE-bq-kuW" id="2CI-om-UKQ"/>
                         <outlet property="deneme4" destination="VWp-yj-iOK" id="4pw-Kh-g8R"/>
                         <outlet property="deneme5" destination="8rl-LC-Ul0" id="d0a-Ja-PBf"/>
+                        <outlet property="movieActors" destination="LEm-Pf-6MO" id="jDS-pE-b8H"/>
                         <outlet property="movieDirector" destination="Iyf-jr-Frw" id="Omx-Fb-gC2"/>
                         <outlet property="movieGenre" destination="34w-hW-WFS" id="mh5-Cl-5MW"/>
                         <outlet property="movieImage" destination="Qnn-cb-DOy" id="Uox-N2-QVy"/>
