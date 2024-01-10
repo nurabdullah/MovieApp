@@ -143,6 +143,7 @@ extension MoviesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedMovie = movies[indexPath.row]
 //        print("Seçilen filmin imdbID'si: \(selectedMovie.imdbID)")
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let movieDetailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController {
             movieDetailVC.movie = selectedMovie
