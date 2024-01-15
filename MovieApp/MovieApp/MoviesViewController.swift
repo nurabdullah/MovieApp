@@ -55,12 +55,9 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var movieSearchField: UITextField!
 
-       
-    
     var movies: [Movie] = []
     var currentPage: Int = 1
     var isFetchingData: Bool = false
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +68,6 @@ class MoviesViewController: UIViewController {
         collectionView.delegate = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
     }
-    
     
     
     @IBAction func searchButton(_ sender: UIButton) {
@@ -85,7 +81,6 @@ class MoviesViewController: UIViewController {
             print("Geçersiz arama")
         }
     }
-
     
     func searchMoviesApiRequest(with title: String, page: Int) {
         let apiKey = "980ee044"
@@ -135,8 +130,6 @@ class MoviesViewController: UIViewController {
         isFetchingData = false
     }
 
-    
-    
 }
 
 extension MoviesViewController: UICollectionViewDataSource {
@@ -148,7 +141,6 @@ extension MoviesViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
         let movie = movies[indexPath.item]
         cell.setup(with: movie)
-        
         return cell
     }
 }
@@ -161,8 +153,6 @@ extension MoviesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 25
     }
-    
-  
 }
 
 extension MoviesViewController: UICollectionViewDelegate {
