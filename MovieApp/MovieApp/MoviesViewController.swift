@@ -75,18 +75,22 @@ class MoviesViewController: UIViewController {
     
     
     @IBAction func searchButton(_ sender: UIButton) {
-        
         if let movieTitle = movieSearchField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !movieTitle.isEmpty {
             currentPage = 1
-          
-            // Temizleme işlemi
             movies.removeAll()
             collectionView.reloadData()
+            collectionView.setContentOffset(CGPoint.zero, animated: true)
             searchMoviesApiRequest(with: movieTitle, page: currentPage)
         } else {
             print("Geçersiz arama")
         }
     }
+
+
+  
+    
+    
+
 
 
     
@@ -202,6 +206,8 @@ extension MoviesViewController: UIScrollViewDelegate {
                 searchMoviesApiRequest(with: movieTitle, page: currentPage)
             }
         }
+       
+        
     }
 }
 
