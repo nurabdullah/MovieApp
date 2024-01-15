@@ -53,14 +53,14 @@ struct SearchResponse: Decodable {
 class MoviesViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    @IBOutlet weak var movieSearchField: UITextField!
+
        
     
     var movies: [Movie] = []
     var currentPage: Int = 1
     var isFetchingData: Bool = false
     
-    @IBOutlet weak var movieSearchField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,15 +85,6 @@ class MoviesViewController: UIViewController {
             print("Geçersiz arama")
         }
     }
-
-
-  
-    
-    
-
-
-
-    
 
     
     func searchMoviesApiRequest(with title: String, page: Int) {
@@ -125,16 +116,10 @@ class MoviesViewController: UIViewController {
 
                 DispatchQueue.main.async {
                     self?.updateMovies(with: searchResponse.search)
-
-                    // Eğer scroll pozisyonunu muhafaza etmek istiyorsanız:
                     if let visibleIndexPath = self?.collectionView.indexPathsForVisibleItems.min(by: { $0.row < $1.row }) {
                         self?.collectionView.scrollToItem(at: visibleIndexPath, at: .top, animated: true)
                     }
-
-                    // Eğer her zaman sayfanın en üstüne gitmek istiyorsanız:
-//                    self?.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
                 }
-
             } catch {
                 print("Hata oluştu: \(error)")
             }
@@ -183,8 +168,6 @@ extension MoviesViewController: UICollectionViewDelegateFlowLayout {
 extension MoviesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedMovie = movies[indexPath.row]
-//        print("Seçilen filmin imdbID'si: \(selectedMovie.imdbID)")
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let movieDetailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController {
             movieDetailVC.movie = selectedMovie
@@ -206,8 +189,6 @@ extension MoviesViewController: UIScrollViewDelegate {
                 searchMoviesApiRequest(with: movieTitle, page: currentPage)
             }
         }
-       
-        
     }
 }
 
