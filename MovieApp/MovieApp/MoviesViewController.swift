@@ -48,14 +48,18 @@ struct SearchResponse: Decodable {
     }
 }
 
-// Runtime, Genre, Director, Actors
 
 
 class MoviesViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+       
+    
     var movies: [Movie] = []
+    var currentPage: Int = 1
+    var isFetchingData: Bool = false
+    
     @IBOutlet weak var movieSearchField: UITextField!
     
     override func viewDidLoad() {
@@ -71,18 +75,26 @@ class MoviesViewController: UIViewController {
     
     
     @IBAction func searchButton(_ sender: UIButton) {
+        
         if let movieTitle = movieSearchField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !movieTitle.isEmpty {
-            searchMoviesApiRequest(with: movieTitle)
+            currentPage = 1
+          
+            // Temizleme işlemi
+            movies.removeAll()
+            collectionView.reloadData()
+            searchMoviesApiRequest(with: movieTitle, page: currentPage)
         } else {
             print("Geçersiz arama")
         }
     }
+
+
     
 
     
-    func searchMoviesApiRequest(with title: String) {
+    func searchMoviesApiRequest(with title: String, page: Int) {
         let apiKey = "980ee044"
-        let urlString = "https://www.omdbapi.com/?apikey=\(apiKey)&s=\(title)"
+        let urlString = "https://www.omdbapi.com/?apikey=\(apiKey)&s=\(title)&page=\(page)"
         print("Aranan URL: \(urlString)")
 
         guard let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
@@ -109,8 +121,16 @@ class MoviesViewController: UIViewController {
 
                 DispatchQueue.main.async {
                     self?.updateMovies(with: searchResponse.search)
-                    self?.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+
+                    // Eğer scroll pozisyonunu muhafaza etmek istiyorsanız:
+                    if let visibleIndexPath = self?.collectionView.indexPathsForVisibleItems.min(by: { $0.row < $1.row }) {
+                        self?.collectionView.scrollToItem(at: visibleIndexPath, at: .top, animated: true)
+                    }
+
+                    // Eğer her zaman sayfanın en üstüne gitmek istiyorsanız:
+//                    self?.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
                 }
+
             } catch {
                 print("Hata oluştu: \(error)")
             }
@@ -119,10 +139,13 @@ class MoviesViewController: UIViewController {
     }
     
     func updateMovies(with newMovies: [Movie]) {
-        movies = newMovies
-        collectionView.reloadData()
+        let oldCount = movies.count
+        movies.append(contentsOf: newMovies)
+        let indexPaths = (oldCount..<movies.count).map { IndexPath(item: $0, section: 0) }
+        collectionView.insertItems(at: indexPaths)
+        isFetchingData = false
     }
-    
+
     
     
 }
@@ -162,6 +185,22 @@ extension MoviesViewController: UICollectionViewDelegate {
         if let movieDetailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController {
             movieDetailVC.movie = selectedMovie
             navigationController?.pushViewController(movieDetailVC, animated: true)
+        }
+    }
+}
+
+extension MoviesViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let screenHeight = scrollView.frame.size.height
+
+        if offsetY > contentHeight - screenHeight && !isFetchingData {
+            currentPage += 1
+            isFetchingData = true
+            if let movieTitle = movieSearchField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !movieTitle.isEmpty {
+                searchMoviesApiRequest(with: movieTitle, page: currentPage)
+            }
         }
     }
 }
