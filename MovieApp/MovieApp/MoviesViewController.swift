@@ -5,7 +5,7 @@ struct Movie: Decodable {
     let posterURL: String
     let imdbID: String
     let year: String
-
+    
     
     
     enum CodingKeys: String, CodingKey {
@@ -13,7 +13,7 @@ struct Movie: Decodable {
         case posterURL = "Poster"
         case imdbID = "imdbID"
         case year = "Year"
-
+        
     }
 }
 
@@ -54,7 +54,7 @@ class MoviesViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var movieSearchField: UITextField!
-
+    
     var movies: [Movie] = []
     var currentPage: Int = 1
     var isFetchingData: Bool = false
@@ -63,7 +63,7 @@ class MoviesViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Geri", style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.tintColor = UIColor(red: 140/255, green: 156/255, blue: 165/255, alpha: 1.0)
-
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
@@ -86,7 +86,7 @@ class MoviesViewController: UIViewController {
         let apiKey = "980ee044"
         let urlString = "https://www.omdbapi.com/?apikey=\(apiKey)&s=\(title)&page=\(page)"
         print("Aranan URL: \(urlString)")
-
+        
         guard let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
               let url = URL(string: encodedURLString) else {
             print("Geçersiz URL")
@@ -107,8 +107,8 @@ class MoviesViewController: UIViewController {
             do {
                 let decoder = JSONDecoder()
                 let searchResponse = try decoder.decode(SearchResponse.self, from: data)
-
-
+                
+                
                 DispatchQueue.main.async {
                     self?.updateMovies(with: searchResponse.search)
                     if let visibleIndexPath = self?.collectionView.indexPathsForVisibleItems.min(by: { $0.row < $1.row }) {
@@ -129,7 +129,7 @@ class MoviesViewController: UIViewController {
         collectionView.insertItems(at: indexPaths)
         isFetchingData = false
     }
-
+    
 }
 
 extension MoviesViewController: UICollectionViewDataSource {
@@ -171,7 +171,7 @@ extension MoviesViewController: UIScrollViewDelegate {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         let screenHeight = scrollView.frame.size.height
-
+        
         if offsetY > contentHeight - screenHeight && !isFetchingData {
             currentPage += 1
             isFetchingData = true

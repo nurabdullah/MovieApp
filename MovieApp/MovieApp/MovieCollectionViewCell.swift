@@ -1,10 +1,3 @@
-//
-//  MoviewCollectionViewCell.swift
-//  MovieApp
-//
-//  Created by Abdullah Nur on 9.01.2024.
-//
-
 import UIKit
 
 class MovieCollectionViewCell: UICollectionViewCell {
@@ -38,7 +31,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     func setup(with movie: Movie) {
         titleLbl.text = "\(movie.title) (\(movie.year))"
-
+        
         if let posterURL = URL(string: movie.posterURL), !movie.posterURL.isEmpty {
             DispatchQueue.global().async {
                 if let data = try? Data(contentsOf: posterURL), let image = UIImage(data: data) {
@@ -53,11 +46,10 @@ class MovieCollectionViewCell: UICollectionViewCell {
                 }
             }
         } else {
-            // Use a default image or leave it empty based on your design
             moviewImageView.image = UIImage(systemName: "movieclapper")
         }
     }
-
+    
     
     
 }
